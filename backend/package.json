@@ -1,0 +1,15 @@
+{
+  "name": "used_cars_estimations_saudi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "used_cars_estimation_saudi"
+  },
+  "author": "Mohammed alshumaymiri & Sultan Bahammam",
+  "license": "ISC"
+}
