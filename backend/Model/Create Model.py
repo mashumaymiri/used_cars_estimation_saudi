@@ -16,36 +16,53 @@ def results_evaluation(y_test, y_pred):
 def main():
     df = pd.read_csv(__file__[:-15]+"/data/UsedCarsSA_Clean_EN.csv", delimiter=",", encoding="utf_8")
 
+    df = df[df["Region"] == "Riyadh"]
+    df = df[df["Price"] != 0]
+
+    df = df.reset_index(drop=True)
+        
+
+    df = df.drop(["Negotiable", "Region"], axis=1)
+
+    df["Origin"] = df["Origin"].replace({"Saudi" : 3, "Gulf Arabic": 2, "Other": 1, "Unknown": 0})
+    df["Options"] = df["Options"].replace({"Full" : 2, "Semi Full": 1, "Standard": 0})
+    df["Fuel_Type"] = df["Fuel_Type"].replace({"Hybrid" : 2, "Diesel": 1, "Gas": 0})
+    df["Gear_Type"] = df["Gear_Type"].replace({"Automatic": 1, "Manual": 0})
+
+    from sklearn.preprocessing import OneHotEncoder
+    oneHotEnc = OneHotEncoder()
+    for column in ["Color", "Make"]:#, "Region"]:
+        encDf = pd.DataFrame(oneHotEnc.fit_transform(np.array(df[column]).reshape(-1, 1)).toarray(), columns=oneHotEnc.get_feature_names_out([column]))
+        df = df.join(encDf)
+        df = df.drop(column, axis=1)
+
+    from sklearn.preprocessing import OrdinalEncoder
+    encoder = OrdinalEncoder()
+    df["Type"] = encoder.fit_transform(df["Type"].array.reshape(-1, 1))
+
     for column in df.columns:
-                    df[column] = pd.Categorical(df[column])
-
-    df["Price"] = df["Price"].astype(int)
-    df["Mileage"] = df["Mileage"].astype(int)
-
-    df= df[df['Price'] != 0]
-
+            df[column] = df[column].astype(float)
+        
     print(df)
     print(df.columns)
 
     y = df["Price"].copy()
     X = df.drop("Price", axis=1).copy()
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, random_state=42) 
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random_state=42) 
 
-    clf = xgb.XGBRegressor(
-        tree_method="gpu_hist", enable_categorical=True, use_label_encoder=True
+    model = xgb.XGBRegressor(
+        tree_method="gpu_hist"
     )
 
-    clf.fit(X_train, y_train, 
-        eval_set=[(X_train, y_train), (X_test, y_test)],
-        verbose=False)
+    model.fit(X_train, y_train, verbose=False)
 
     y_true = np.array(y_test, dtype=float)
-    y_pred = np.array(clf.predict(X_test), dtype=float)
+    y_pred = np.array(model.predict(X_test), dtype=float)
 
     results_evaluation(y_true, y_pred)
 
-    clf.save_model(__file__[:-15]+"\models\model_v1.json")
+    model.save_model(__file__[:-15]+"\models\model_v1.json")
 
 
 if __name__ == "__main__":
