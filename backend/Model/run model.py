@@ -5,7 +5,7 @@ import numpy as np
 
 def runModel(args):
     Make, Type, Year, Origin, Color, Options, Engine_Size, Fuel_Type, Gear_Type, Mileage, Region = args
-    print(Make, Type, Year, Origin, Color, Options, Engine_Size, Fuel_Type, Gear_Type, Mileage, Region)
+    # print(Make, Type, Year, Origin, Color, Options, Engine_Size, Fuel_Type, Gear_Type, Mileage, Region)
     
     f = open("columnNames.txt", "r", encoding="utf-8")
     columns = f.read()
@@ -41,7 +41,7 @@ def runModel(args):
 
 
     # df.loc[len(df.index)] = [Make, Type, Year, Origin, Options, Engine_Size, Fuel_Type, Gear_Type, Mileage, 0]
-    print(df)
+    # print(df)
     # df = df.drop(["Region"], axis=1)
 
     df["Origin"] = df["Origin"].replace({"Saudi" : 3, "Gulf Arabic": 2, "Other": 1, "Unknown": 0})
@@ -57,7 +57,7 @@ def runModel(args):
     # df = pd.DataFrame(columns=['Make', 'Type', 'Year', 'Origin', 'Color', 'Options', 'Engine_Size', 'Fuel_Type', 'Gear_Type', 'Mileage', 'Region', 'Price', 'Negotiable'])
     
 
-    print(df)
+    # print(df)
 
     for column in df.columns:
         if column in ["Make"]:
@@ -74,23 +74,23 @@ def runModel(args):
     dtest = xgb.DMatrix(X,label=y, enable_categorical=True)
     
     model = xgb.Booster()
-    print("loding model")
+    # print("loding model")
     
     model.load_model(fname=__file__[:-12]+"/models/model_v1.json")
 
-    print("predicting")
+    # print("predicting")
     # y_true = np.array(y_test, dtype=float)
     y_pred = model.predict(dtest)
     # Main.results_evaluation(y_true, y_pred)
     print(y_pred)
     return y_pred
 
-# runModel(sys.argv[1:])
-runModel([
-    'Kia',       'Optima',
-    2014,        'Saudi',
-    'Black',     'Standard',
-    1.8,         'Gas',
-    'Automatic', 60000,
-    'Riyadh'
-  ])
+runModel(sys.argv[1:])
+# runModel([
+#     'Kia',       'Optima',
+#     2014,        'Saudi',
+#     'Black',     'Standard',
+#     1.8,         'Gas',
+#     'Automatic', 60000,
+#     'Riyadh'
+#   ])

@@ -1,9 +1,13 @@
 import express from "express";
 import { PythonShell, PythonShellError } from "python-shell";
+import cors from "cors";
+
 
 const app = express();
 
-app.get("/", (req: express.Request, res: express.Response): void => {
+app.use(cors())
+
+app.get("/", cors(),(req: express.Request, res: express.Response): void => {
   const Make: string = req.query["Make"] as string;
   const Type: string = req.query["Type"] as string;
   const Year: number = parseInt(req.query["Year"] as unknown as string);
@@ -16,7 +20,7 @@ app.get("/", (req: express.Request, res: express.Response): void => {
   const Fuel_Type: string = req.query["Fuel_Type"] as string;
   const Gear_Type: string = req.query["Gear_Type"] as string;
   const Mileage: number = parseInt(req.query["Mileage"] as unknown as string);
-  const Region: string = req.query["Region"] as string;
+  const Region: string = /* req.query["Region"] as string */"Riyadh";
 
   const data: (string | number)[] = [
     Make,
