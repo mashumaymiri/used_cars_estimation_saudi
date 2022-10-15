@@ -31,7 +31,7 @@ def main():
 
     from sklearn.preprocessing import OneHotEncoder
     oneHotEnc = OneHotEncoder()
-    for column in ["Color", "Make"]:#, "Region"]:
+    for column in ["Color"]:#, "Make"]:#, "Region"]:
         encDf = pd.DataFrame(oneHotEnc.fit_transform(np.array(df[column]).reshape(-1, 1)).toarray(), columns=oneHotEnc.get_feature_names_out([column]))
         df = df.join(encDf)
         df = df.drop(column, axis=1)
@@ -39,20 +39,34 @@ def main():
     from sklearn.preprocessing import OrdinalEncoder
     encoder = OrdinalEncoder()
     df["Type"] = encoder.fit_transform(df["Type"].array.reshape(-1, 1))
+    # print(encoder.get_feature_names_out(["Type"]))
+    
+    f = open("TypesEncoder.txt", "w", encoding="utf-8")
+    for Type in encoder.categories_[0]:
+        f.write(Type+",")
+    f.close()
 
     for column in df.columns:
+        if column in ["Make"]:
+            df[column] = pd.Categorical(df[column])
+        else:
             df[column] = df[column].astype(float)
-        
+    
     print(df)
     print(df.columns)
 
+    f = open("columnNames.txt", "w", encoding="utf-8")
+    for column in df.columns:
+        f.write(column+",")
+    f.close()
+    
     y = df["Price"].copy()
     X = df.drop("Price", axis=1).copy()
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random_state=42) 
 
     model = xgb.XGBRegressor(
-        tree_method="gpu_hist"
+        tree_method="gpu_hist", enable_categorical=True 
     )
 
     model.fit(X_train, y_train, verbose=False)
