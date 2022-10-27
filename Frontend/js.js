@@ -16,7 +16,7 @@ function clicked_submit() {
     $("#result").html("Predicting....");
     $.get( url, function( data ) {
         pred = data[0].replace("[", "")
-        $( "#result" ).html("SAR "+pred.replace("]", ""));
+        $( "#result" ).html("The Price is: "+pred.replace("]", " ")+"SAR");
         console.log(data)
         console.log(url)
 

@@ -2,168 +2,662 @@
     <head>
         <title>Prediction of used cars</title>
     </head>
+    <style>
+        .container {
+            font-family: Calibri, Helvetica, sans-serif;
+            width: 10%;
+            margin: -820px 0;
+            padding: 15px 80px 0px;
+            border: 2px solid black;
+            font-size: 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        Body{
+            font-family: Calibri, Helvetica, sans-serif;
+            padding: 30px;
+            background-image: url(pics/background1.png)
+        }
+        .headerbox {
+            width: 103.5%;
+            margin: -40px -60px 0px;
+            padding: 10px 4px 1px;
+            background-image: url(pics/background.png);
+            font-size: 20px;
+            color: white;
+            border: 2px solid black;
+        }
+        .navbox {
+            width: 100.1%;
+            margin: 752px -60px 0px;
+            height: 24px;
+            padding: 0px 47px 79px;
+            font-size: 20px;
+            color: white;
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,39,80,1) 69%, rgba(42,124,140,1) 100%);
+            background-image: url(pics/background.png);
+            border: 1px solid black;
+        }
+        
+        button,button:link,
+        button:visited {
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,39,80,1) 69%, rgba(42,124,140,1) 100%);
+            padding: 10px 20px;
+            color: white;
+            border: 2px solid black;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        button:hover,
+        button:active {
+            background: rgb(1, 1, 7);
+            background: linear-gradient(90deg, rgb(1, 1, 8) 0%, rgb(8, 8, 14) 69%, rgb(17, 41, 46) 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        #result{
+            font-size: 25px;
+            color: black;
+        }
+        select{
+            font-size: 15px;
+        }
+        input{
+            width: 100px;
+            font-size: 15px;
+        }
+        .home-nav{
+            position: absolute;
+            top: 900px;
+            right: 1100px;
+            font-size: 25px;
+        }
+        .contact-nav{
+            position: absolute;
+            top: 900px;
+            right: 700px;
+            font-size: 25px;
+            color: white
+        }
+        .a1:link, .a1:visited {
+            color: white;
+            padding: 0px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .a1:hover, .a1:active {
+            color: white;
+            text-decoration: underline;     
+            text-decoration-color: white; 
+        }
+        
+    </style>
     <body>
-        <form action="localhost:3000/" method="GET" id="form">
-        <!-- <form id="form"> -->
-            <div>
-              <label for="Make">Make: </label>
-              <select id="Make" name="Make" size="1">
-                  <option value="Toyota">Toyota</option>
-                <option value="Chrysler">Chrysler</option>
-                <option value="Nissan">Nissan</option>
-                <option value="Hyundai">Hyundai</option>
-                <option value="Honda">Honda</option>
-                <option value="GMC">GMC</option>
-                <option value="Chevrolet">Chevrolet</option>
-                <option value="Cadillac">Cadillac</option>
-                <option value="MINI">MINI</option>
-                <option value="Mercedes">Mercedes</option>
-                <option value="Lexus">Lexus</option>
-                <option value="Land Rover">Land Rover</option>
-                <option value="Mazda">Mazda</option>
-                <option value="Ford">Ford</option>
-                <option value="Kia">Kia</option>
-                <option value="Suzuki">Suzuki</option>
-                <option value="Peugeot">Peugeot</option>
-                <option value="Geely">Geely</option>
-                <option value="MG">MG</option>
-                <option value="Jeep">Jeep</option>
-                <option value="INFINITI">INFINITI</option>
-                <option value="Dodge">Dodge</option>
-                <option value="Great Wall">Great Wall</option>
-                <option value="Jaguar">Jaguar</option>
-                <option value="GAC">GAC</option>
-                <option value="Changan">Changan</option>
-                <option value="HAVAL">HAVAL</option>
-                <option value="BMW">BMW</option>
-                <option value="Renault">Renault</option>
-                <option value="Rolls-Royce">Rolls-Royce</option>
-                <option value="Porsche">Porsche</option>
-                <option value="Mitsubishi">Mitsubishi</option>
-                <option value="Isuzu">Isuzu</option>
-                <option value="Subaru">Subaru</option>
-                <option value="Zhengzhou">Zhengzhou</option>
-                <option value="Lincoln">Lincoln</option>
-                <option value="Volkswagen">Volkswagen</option>
-                <option value="Daihatsu">Daihatsu</option>
-                <option value="FAW">FAW</option>
-                <option value="Chery">Chery</option>
-                <option value="Aston Martin">Aston Martin</option>
-                <option value="Bentley">Bentley</option>
-                <option value="Audi">Audi</option>
-                <option value="Mercury">Mercury</option>
-                <option value="Fiat">Fiat</option>
-                <option value="BYD">BYD</option>
-                <option value="Classic">Classic</option>
-                <option value="Hummer">Hummer</option>
-                <option value="Maserati">Maserati</option>
-                <option value="SsangYong">SsangYong</option>
-                <option value="Lifan">Lifan</option>
-                <option value="Foton">Foton</option>
-                <option value="Tata">Tata</option>
-                <option value="Victory Auto">Victory Auto</option>
-                <option value="Škoda">Škoda</option>
-                <option value="Iveco">Iveco</option>
-                <option value="Other">Other</option>
-              </select>
+        <center>
+            <div class="headerbox">
+                <h1>Prediction of used cars</h1>
             </div>
-
-            <div>
-                <label for="Type">model: </label>
-                <select id="Type" name="Type" size="1">
-                    <option value="Camry">Camry</option>
-                    <option value="Optima">Optima</option>
-                    <option value="Yukon">Yukon</option>
-                    <option value="Tahoe">Tahoe</option>
-                </select>
+        </center>
+        <div class="bg-image"></div>
+            <div class="navbox">
+                <b class="home-nav"><a class="a1" href="html.html">Home</a></b>
+                <nav class="contact-nav"><a class="a1" href="">Contact us</a></nav>
             </div>
-
-            <div>
-                <label for="Year">Year: </label>
-                <input name="Year" id="Year" value="2020" />
-            </div>
-
-            <div>
-                <label for="Origin">Origin: </label>
-                <select id="Origin" name="Origin" size="1">
-                    <option value="Saudi">Saudi</option>
-                    <option value="Gulf Arabic">Gulf</option>
-                    <option value="Other">Other</option>
-                    <option value="Unknown">Unknown</option>
-                </select>
-            </div>
-            
-            <div>
-                <label for="Color">Color: </label>
-                <select id="Color" name="Color" size="1">
-                    <option value="Black">Black</option>
-                    <option value="White">White</option>
-                    <option value="Silver">Silver</option>
-                    <option value="Grey">Grey</option>
-                    <option value="Navy">Navy</option>
-                    <option value="Bronze">Bronze</option>
-                    <option value="Red">Red</option>
-                    <option value="Golden">Golden</option>
-                    <option value="Brown">Brown</option>
-                    <option value="Blue">Blue</option>
-                    <option value="Oily">Oily</option>
-                    <option value="Green">Green</option>
-                    <option value="Orange">Orange</option>
-                    <option value="Yellow">Yellow</option>
-                    <option value="Another Color">Another Color</option>
-                </select>
-            </div>
-            
-            <div>
-                <label for="Options">Options: </label>
-                <select id="Options" name="Options" size="1">
-                    <option value="Full">Full</option>
-                    <option value="Semi Full">Semi Full'</option>
-                    <option value="Standard">Standard</option>
-                </select>
-            </div>
-            
-            <div>
-                <label for="Engine_Size">Engine_Size: </label>
-                <input name="Engine_Size" id="Engine_Size" value="2.0" />
-            </div>
-            
-            <div>
-                <label for="Fuel_Type">Fuel_Type: </label>
-                <select id="Fuel_Type" name="Fuel_Type" size="1">
-                    <option value="Gas">Gas</option>
-                    <option value="Diesel">Diesel'</option>
-                    <option value="Hybrid">Hybrid</option>
-                </select>
-            </div>
-            
-            <div>
-                <label for="Gear_Type">Gear_Type: </label>
-                <select id="Gear_Type" name="Gear_Type" size="1">
-                    <option value="Automatic">Automatic</option>
-                    <option value="Manual">Manual'</option>
-                </select>
-            </div>
-            
-            <div>
-                <label for="Mileage">Mileage: </label>
-                <input name="Mileage" id="Mileage" value="60000" />
-            </div>
-            
-           <!--  <div>
-                <label for="Region">Region: </label>
-                <input name="Region" id="Region" value="Riyadh" />
-            </div> -->
-            
-            <div>
-              <button onclick="clicked_submit()">Predict price of the car</button>
-            </div>
-        </form>
-        <br>
-        <div id="result">
-            
+        
+        <center>
+            <div class="container">
+                <form action="localhost:3000/" method="GET" id="form">
+                <!-- <form id="form"> -->
+                    <div>
+                    <label for="Make">Make: </label>
+                    <select id="Make" name="Make" size="1">
+                        <option value="Chrysler">Chrysler</option>
+                        <option value="Nissan">Nissan</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="GMC">GMC</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Mercedes">Mercedes</option>
+                        <option value="MINI">MINI</option>
+                        <option value="Lexus">Lexus</option>
+                        <option value="Land Rover">Land Rover</option>
+                        <option value="Mazda">Mazda</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Kia">Kia</option>
+                        <option value="Genesis">Genesis</option>
+                        <option value="Cadillac">Cadillac</option>
+                        <option value="Geely">Geely</option>
+                        <option value="MG">MG</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="INFINITI">INFINITI</option>
+                        <option value="Dodge">Dodge</option>
+                        <option value="Ferrari">Ferrari</option>
+                        <option value="Great Wall">Great Wall</option>
+                        <option value="Jaguar">Jaguar</option>
+                        <option value="GAC">GAC</option>
+                        <option value="Renault">Renault</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Peugeot">Peugeot</option>
+                        <option value="Changan">Changan</option>
+                        <option value="HAVAL">HAVAL</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Rolls-Royce">Rolls-Royce</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Mitsubishi">Mitsubishi</option>
+                        <option value="Isuzu">Isuzu</option>
+                        <option value="Subaru">Subaru</option>
+                        <option value="Zhengzhou">Zhengzhou</option>
+                        <option value="Lincoln">Lincoln</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Daihatsu">Daihatsu</option>
+                        <option value="FAW">FAW</option>
+                        <option value="Chery">Chery</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Bentley">Bentley</option>
+                        <option value="Aston Martin">Aston Martin</option>
+                        <option value="Mercury">Mercury</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="BYD">BYD</option>
+                        <option value="Classic">Classic</option>
+                        <option value="Hummer">Hummer</option>
+                        <option value="Other">Other</option>
+                        <option value="Maserati">Maserati</option>
+                        <option value="SsangYong">SsangYong</option>
+                        <option value="Lifan">Lifan</option>
+                        <option value="Foton">Foton</option>
+                        <option value="Tata">Tata</option>
+                        <option value="Victory Auto">Victory Auto</option>
+                        <option value="Škoda">Škoda</option>
+                        <option value="Iveco">Iveco</option>
+                    </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Type">Model: </label>
+                        <select id="Type" name="Type" size="1">
+                            <option value="C300">C300</option>
+                            <option value="Patrol">Patrol</option>
+                            <option value="Sunny">Sunny</option>
+                            <option value="Elantra">Elantra</option>
+                            <option value="Accord">Accord</option>
+                            <option value="Land Cruiser">Land Cruiser</option>
+                            <option value="Yukon">Yukon</option>
+                            <option value="Impala">Impala</option>
+                            <option value="Yaris">Yaris</option>
+                            <option value="Camry">Camry</option>
+                            <option value="Tahoe">Tahoe</option>
+                            <option value="CLA">CLA</option>
+                            <option value="E">E</option>
+                            <option value="Corolla">Corolla</option>
+                            <option value="Copper">Copper</option>
+                            <option value="Prado">Prado</option>
+                            <option value="Civic">Civic</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="RX">RX</option>
+                            <option value="Range Rover">Range Rover</option>
+                            <option value="Avalon">Avalon</option>
+                            <option value="Bus Urvan">Bus Urvan</option>
+                            <option value="Aurion">Aurion</option>
+                            <option value="Malibu">Malibu</option>
+                            <option value="Rav4">Rav4</option>
+                            <option value="CX9">CX9</option>
+                            <option value="Expedition">Expedition</option>
+                            <option value="ES">ES</option>
+                            <option value="Cadenza">Cadenza</option>
+                            <option value="Tucson">Tucson</option>
+                            <option value="Platinum">Platinum</option>
+                            <option value="G80">G80</option>
+                            <option value="Accent">Accent</option>
+                            <option value="Sonata">Sonata</option>
+                            <option value="LX">LX</option>
+                            <option value="Senta fe">Senta fe</option>
+                            <option value="GX">GX</option>
+                            <option value="Azera">Azera</option>
+                            <option value="CT-S">CT-S</option>
+                            <option value="EC7">EC7</option>
+                            <option value="ZS">ZS</option>
+                            <option value="Kona">Kona</option>
+                            <option value="Grand Cherokee">Grand Cherokee</option>
+                            <option value="Optima">Optima</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="Charger">Charger</option>
+                            <option value="Taurus">Taurus</option>
+                            <option value="GTB 599 Fiorano">GTB 599 Fiorano</option>
+                            <option value="Suburban">Suburban</option>
+                            <option value="Royal">Royal</option>
+                            <option value="Picanto">Picanto</option>
+                            <option value="Power">Power</option>
+                            <option value="Datsun">Datsun</option>
+                            <option value="F-Pace">F-Pace</option>
+                            <option value="Hilux">Hilux</option>
+                            <option value="FJ">FJ</option>
+                            <option value="Explorer">Explorer</option>
+                            <option value="Land Cruiser 70">Land Cruiser 70</option>
+                            <option value="GS8">GS8</option>
+                            <option value="Maxima">Maxima</option>
+                            <option value="Caprice">Caprice</option>
+                            <option value="Challenger">Challenger</option>
+                            <option value="Camaro">Camaro</option>
+                            <option value="Symbol">Symbol</option>
+                            <option value="Fluence">Fluence</option>
+                            <option value="6">6</option>
+                            <option value="RX5">RX5</option>
+                            <option value="APV">APV</option>
+                            <option value="3008">3008</option>
+                            <option value="Cerato">Cerato</option>
+                            <option value="Traverse">Traverse</option>
+                            <option value="Marquis">Marquis</option>
+                            <option value="Innova">Innova</option>
+                            <option value="Sierra">Sierra</option>
+                            <option value="F150">F150</option>
+                            <option value="Genesis">Genesis</option>
+                            <option value="NX">NX</option>
+                            <option value="C">C</option>
+                            <option value="G70">G70</option>
+                            <option value="Flex">Flex</option>
+                            <option value="UX">UX</option>
+                            <option value="Cores">Cores</option>
+                            <option value="Creta">Creta</option>
+                            <option value="Rio">Rio</option>
+                            <option value="Odyssey">Odyssey</option>
+                            <option value="Sylvian Bus">Sylvian Bus</option>
+                            <option value="CT6">CT6</option>
+                            <option value="H1">H1</option>
+                            <option value="Ciocca">Ciocca</option>
+                            <option value="Land Cruiser Pickup">Land Cruiser Pickup</option>
+                            <option value="Cressida">Cressida</option>
+                            <option value="Sportage">Sportage</option>
+                            <option value="Duster">Duster</option>
+                            <option value="Seven">Seven</option>
+                            <option value="GLC">GLC</option>
+                            <option value="Carnival">Carnival</option>
+                            <option value="EC8">EC8</option>
+                            <option value="H6">H6</option>
+                            <option value="300">300</option>
+                            <option value="The 7">The 7</option>
+                            <option value="Z370">Z370</option>
+                            <option value="Spark">Spark</option>
+                            <option value="Ghost">Ghost</option>
+                            <option value="911">911</option>
+                            <option value="Attrage">Attrage</option>
+                            <option value="Focus">Focus</option>
+                            <option value="X-Trail">X-Trail</option>
+                            <option value="Dyna">Dyna</option>
+                            <option value="Forester">Forester</option>
+                            <option value="CX5">CX5</option>
+                            <option value="Pick up">Pick up</option>
+                            <option value="ML">ML</option>
+                            <option value="The 4">The 4</option>
+                            <option value="GS">GS</option>
+                            <option value="Pajero">Pajero</option>
+                            <option value="Acadia">Acadia</option>
+                            <option value="City">City</option>
+                            <option value="Echo Sport">Echo Sport</option>
+                            <option value="Vego">Vego</option>
+                            <option value="The 5">The 5</option>
+                            <option value="Silverado">Silverado</option>
+                            <option value="Cherokee">Cherokee</option>
+                            <option value="Altima">Altima</option>
+                            <option value="X">X</option>
+                            <option value="Navigator">Navigator</option>
+                            <option value="Wrangler">Wrangler</option>
+                            <option value="G">G</option>
+                            <option value="XT5">XT5</option>
+                            <option value="Cruze">Cruze</option>
+                            <option value="Navara">Navara</option>
+                            <option value="Touareg">Touareg</option>
+                            <option value="Gran Max">Gran Max</option>
+                            <option value="Escalade">Escalade</option>
+                            <option value="Cayenne S">Cayenne S</option>
+                            <option value="Aveo">Aveo</option>
+                            <option value="Soul">Soul</option>
+                            <option value="Durango">Durango</option>
+                            <option value="Montero">Montero</option>
+                            <option value="Prestige">Prestige</option>
+                            <option value="Sentra">Sentra</option>
+                            <option value="Dokker">Dokker</option>
+                            <option value="Veloster">Veloster</option>
+                            <option value="Fusion">Fusion</option>
+                            <option value="Capture">Capture</option>
+                            <option value="Pathfinder">Pathfinder</option>
+                            <option value="Seltos">Seltos</option>
+                            <option value="Behbehani">Behbehani</option>
+                            <option value="Victoria">Victoria</option>
+                            <option value="LS">LS</option>
+                            <option value="Emgrand">Emgrand</option>
+                            <option value="Carenz">Carenz</option>
+                            <option value="SEL">SEL</option>
+                            <option value="The 6">The 6</option>
+                            <option value="SL">SL</option>
+                            <option value="H2">H2</option>
+                            <option value="Nativa">Nativa</option>
+                            <option value="Talisman">Talisman</option>
+                            <option value="CL">CL</option>
+                            <option value="Mustang">Mustang</option>
+                            <option value="5008">5008</option>
+                            <option value="CX3">CX3</option>
+                            <option value="A">A</option>
+                            <option value="T77">T77</option>
+                            <option value="Optra">Optra</option>
+                            <option value="Safrane">Safrane</option>
+                            <option value="QX">QX</option>
+                            <option value="Tiggo">Tiggo</option>
+                            <option value="Ranger">Ranger</option>
+                            <option value="H9">H9</option>
+                            <option value="Eado">Eado</option>
+                            <option value="GLE">GLE</option>
+                            <option value="MKS">MKS</option>
+                            <option value="CT5">CT5</option>
+                            <option value="VTC">VTC</option>
+                            <option value="Panamera">Panamera</option>
+                            <option value="CS35">CS35</option>
+                            <option value="Coolray">Coolray</option>
+                            <option value="Countryman">Countryman</option>
+                            <option value="D-MAX">D-MAX</option>
+                            <option value="Azkarra">Azkarra</option>
+                            <option value="Partner">Partner</option>
+                            <option value="301">301</option>
+                            <option value="A6">A6</option>
+                            <option value="Pilot">Pilot</option>
+                            <option value="Previa">Previa</option>
+                            <option value="X-Terra">X-Terra</option>
+                            <option value="Other">Other</option>
+                            <option value="Blazer">Blazer</option>
+                            <option value="Hiace">Hiace</option>
+                            <option value="Maybach">Maybach</option>
+                            <option value="V7">V7</option>
+                            <option value="CS75">CS75</option>
+                            <option value="Flying Spur">Flying Spur</option>
+                            <option value="Outlander">Outlander</option>
+                            <option value="Sorento">Sorento</option>
+                            <option value="Vanquish">Vanquish</option>
+                            <option value="Safari">Safari</option>
+                            <option value="K5">K5</option>
+                            <option value="HRV">HRV</option>
+                            <option value="3">3</option>
+                            <option value="Q5">Q5</option>
+                            <option value="CT4">CT4</option>
+                            <option value="MKX">MKX</option>
+                            <option value="S5">S5</option>
+                            <option value="X7">X7</option>
+                            <option value="CS95">CS95</option>
+                            <option value="Rush">Rush</option>
+                            <option value="2">2</option>
+                            <option value="Delta">Delta</option>
+                            <option value="IS">IS</option>
+                            <option value="Cayenne">Cayenne</option>
+                            <option value="CS35 Plus">CS35 Plus</option>
+                            <option value="KICKS">KICKS</option>
+                            <option value="Q">Q</option>
+                            <option value="CS85">CS85</option>
+                            <option value="Armada">Armada</option>
+                            <option value="Opirus">Opirus</option>
+                            <option value="Echo">Echo</option>
+                            <option value="Avanza">Avanza</option>
+                            <option value="Terios Ground">Terios Ground</option>
+                            <option value="5">5</option>
+                            <option value="S300">S300</option>
+                            <option value="Corolla Cross">Corolla Cross</option>
+                            <option value="Koleos">Koleos</option>
+                            <option value="Town Car">Town Car</option>
+                            <option value="Compass">Compass</option>
+                            <option value="Edge">Edge</option>
+                            <option value="Grand Marquis">Grand Marquis</option>
+                            <option value="A8">A8</option>
+                            <option value="Grand Vitara">Grand Vitara</option>
+                            <option value="Mohave">Mohave</option>
+                            <option value="Lumina">Lumina</option>
+                            <option value="500">500</option>
+                            <option value="Macan">Macan</option>
+                            <option value="Passat">Passat</option>
+                            <option value="CLS">CLS</option>
+                            <option value="Stinger">Stinger</option>
+                            <option value="Viano">Viano</option>
+                            <option value="A3">A3</option>
+                            <option value="S8">S8</option>
+                            <option value="Vantage">Vantage</option>
+                            <option value="RX8">RX8</option>
+                            <option value="RC">RC</option>
+                            <option value="MKZ">MKZ</option>
+                            <option value="CC">CC</option>
+                            <option value="C-HR">C-HR</option>
+                            <option value="S7">S7</option>
+                            <option value="Wingle">Wingle</option>
+                            <option value="Terrain">Terrain</option>
+                            <option value="Savana">Savana</option>
+                            <option value="Ram">Ram</option>
+                            <option value="Coaster">Coaster</option>
+                            <option value="Vitara">Vitara</option>
+                            <option value="Juke">Juke</option>
+                            <option value="C200">C200</option>
+                            <option value="FX">FX</option>
+                            <option value="Terios">Terios</option>
+                            <option value="Fleetwood">Fleetwood</option>
+                            <option value="Milan">Milan</option>
+                            <option value="Cayman">Cayman</option>
+                            <option value="Boxer">Boxer</option>
+                            <option value="ATS">ATS</option>
+                            <option value="Cadillac">Cadillac</option>
+                            <option value="H3">H3</option>
+                            <option value="T60">T60</option>
+                            <option value="Trailblazer">Trailblazer</option>
+                            <option value="Prius">Prius</option>
+                            <option value="F3">F3</option>
+                            <option value="A5">A5</option>
+                            <option value="XF">XF</option>
+                            <option value="Gamble">Gamble</option>
+                            <option value="The 3">The 3</option>
+                            <option value="Koranado">Koranado</option>
+                            <option value="L200">L200</option>
+                            <option value="Crown">Crown</option>
+                            <option value="Lancer">Lancer</option>
+                            <option value="360">360</option>
+                            <option value="Jimny">Jimny</option>
+                            <option value="XJ">XJ</option>
+                            <option value="LF X60">LF X60</option>
+                            <option value="Van">Van</option>
+                            <option value="Envoy">Envoy</option>
+                            <option value="Patriot">Patriot</option>
+                            <option value="GL">GL</option>
+                            <option value="The M">The M</option>
+                            <option value="Arnage">Arnage</option>
+                            <option value="ASX">ASX</option>
+                            <option value="F Type">F Type</option>
+                            <option value="Golf">Golf</option>
+                            <option value="Coupe S">Coupe S</option>
+                            <option value="Camargue">Camargue</option>
+                            <option value="Doblo">Doblo</option>
+                            <option value="4Runner">4Runner</option>
+                            <option value="M300">M300</option>
+                            <option value="DTS">DTS</option>
+                            <option value="Bus County">Bus County</option>
+                            <option value="Prestige Plus">Prestige Plus</option>
+                            <option value="H-2">H-2</option>
+                            <option value="Z">Z</option>
+                            <option value="Avante">Avante</option>
+                            <option value="Discovery">Discovery</option>
+                            <option value="A4">A4</option>
+                            <option value="B50">B50</option>
+                            <option value="Montero2">Montero2</option>
+                            <option value="Bronco">Bronco</option>
+                            <option value="Dakota">Dakota</option>
+                            <option value="Beetle">Beetle</option>
+                            <option value="Coupe">Coupe</option>
+                            <option value="Mini Van">Mini Van</option>
+                            <option value="Avalanche">Avalanche</option>
+                            <option value="Ertiga">Ertiga</option>
+                            <option value="GS3">GS3</option>
+                            <option value="Quattroporte">Quattroporte</option>
+                            <option value="Defender">Defender</option>
+                            <option value="A7">A7</option>
+                            <option value="Gloria">Gloria</option>
+                            <option value="BT-50">BT-50</option>
+                            <option value="SLK">SLK</option>
+                            <option value="Tuscani">Tuscani</option>
+                            <option value="POS24">POS24</option>
+                            <option value="Kaptiva">Kaptiva</option>
+                            <option value="Murano">Murano</option>
+                            <option value="DB9">DB9</option>
+                            <option value="Levante">Levante</option>
+                            <option value="Jetta">Jetta</option>
+                            <option value="H100">H100</option>
+                            <option value="Transit">Transit</option>
+                            <option value="CRV">CRV</option>
+                            <option value="Thunderbird">Thunderbird</option>
+                            <option value="Nexon">Nexon</option>
+                            <option value="i40">i40</option>
+                            <option value="Cayenne Turbo S">Cayenne Turbo S</option>
+                            <option value="Tiguan">Tiguan</option>
+                            <option value="Logan">Logan</option>
+                            <option value="Abeka">Abeka</option>
+                            <option value="Dzire">Dzire</option>
+                            <option value="Centennial">Centennial</option>
+                            <option value="Cayenne Turbo">Cayenne Turbo</option>
+                            <option value="Mini Cooper">Mini Cooper</option>
+                            <option value="Continental GT">Continental GT</option>
+                            <option value="Z350">Z350</option>
+                            <option value="Nitro">Nitro</option>
+                            <option value="Van R">Van R</option>
+                            <option value="Crosstour">Crosstour</option>
+                            <option value="SX4">SX4</option>
+                            <option value="Suvana">Suvana</option>
+                            <option value="Liberty">Liberty</option>
+                            <option value="Freestar">Freestar</option>
+                            <option value="X40">X40</option>
+                            <option value="Colorado">Colorado</option>
+                            <option value="SRX">SRX</option>
+                            <option value="Fabia">Fabia</option>
+                            <option value="Megane">Megane</option>
+                            <option value="Bentayga">Bentayga</option>
+                            <option value="Q7">Q7</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Carens">Carens</option>
+                            <option value="New Yorker">New Yorker</option>
+                            <option value="GC7">GC7</option>
+                            <option value="G330">G330</option>
+                            <option value="Commander">Commander</option>
+                            <option value="Sedona">Sedona</option>
+                            <option value="Cayenne Turbo GTS">Cayenne Turbo GTS</option>
+                            <option value="SRT">SRT</option>
+                            <option value="Bora">Bora</option>
+                            <option value="HS">HS</option>
+                            <option value="D'max">D'max</option>
+                            <option value="Silvia">Silvia</option>
+                            <option value="Pegas">Pegas</option>
+                            <option value="C5700">C5700</option>
+                            <option value="Superb">Superb</option>
+                            <option value="Actros">Actros</option>
+                            <option value="Veracruz">Veracruz</option>
+                            <option value="307">307</option>
+                            <option value="S6">S6</option>
+                            <option value="ِACTIS V80">ِACTIS V80</option>
+                            <option value="CX7">CX7</option>
+                            <option value="QQ">QQ</option>
+                            <option value="L300">L300</option>
+                            <option value="Galant">Galant</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Year">Year: </label>
+                        <input name="Year" id="Year" value="2020" />
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Origin">Origin: </label>
+                        <select id="Origin" name="Origin" size="1">
+                            <option value="Saudi">Saudi</option>
+                            <option value="Gulf Arabic">Gulf</option>
+                            <option value="Other">Other</option>
+                            <option value="Unknown">Unknown</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Color">Color: </label>
+                        <select id="Color" name="Color" size="1">
+                            <option value="Black">Black</option>
+                            <option value="White">White</option>
+                            <option value="Silver">Silver</option>
+                            <option value="Grey">Grey</option>
+                            <option value="Navy">Navy</option>
+                            <option value="Bronze">Bronze</option>
+                            <option value="Red">Red</option>
+                            <option value="Golden">Golden</option>
+                            <option value="Brown">Brown</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Oily">Oily</option>
+                            <option value="Green">Green</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Yellow">Yellow</option>
+                            <option value="Another Color">Another Color</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Options">Options: </label>
+                        <select id="Options" name="Options" size="1">
+                            <option value="Full">Full</option>
+                            <option value="Semi Full">Semi Full'</option>
+                            <option value="Standard">Standard</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Engine_Size">Engine size: </label>
+                        <input name="Engine_Size" id="Engine_Size" value="2.0" />
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Fuel_Type">Fuel Type: </label>
+                        <select id="Fuel_Type" name="Fuel_Type" size="1">
+                            <option value="Gas">Gas</option>
+                            <option value="Diesel">Diesel'</option>
+                            <option value="Hybrid">Hybrid</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Gear_Type">Gear Type: </label>
+                        <select id="Gear_Type" name="Gear_Type" size="1">
+                            <option value="Automatic">Automatic</option>
+                            <option value="Manual">Manual'</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Mileage">Mileage: </label>
+                        <input name="Mileage" id="Mileage" value="60000" />
+                    </div>
+                    
+                <!--  <div>
+                        <label for="Region">Region: </label>
+                        <input name="Region" id="Region" value="Riyadh" />
+                    </div> -->
+                    <br>
+                    <div>
+                    <button onclick="clicked_submit()">Predict price of the car</button>
+                    </div>
+                </form>
+                <div id="result">
+                
+                </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                <script src="js.js"></script>
+                <br>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="js.js"></script>
+    </center>
+    <canvas class="background"></canvas>
+    <script src="path/to/particles.min.js"></script>
     </body>
 </html>

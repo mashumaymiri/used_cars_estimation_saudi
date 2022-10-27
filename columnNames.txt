@@ -1,0 +1,1 @@
+Make,Type,Year,Origin,Options,Engine_Size,Fuel_Type,Gear_Type,Mileage,Price,Color_Another Color,Color_Black,Color_Blue,Color_Bronze,Color_Brown,Color_Golden,Color_Green,Color_Grey,Color_Navy,Color_Oily,Color_Orange,Color_Red,Color_Silver,Color_White,Color_Yellow,
