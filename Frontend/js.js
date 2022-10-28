@@ -10,8 +10,9 @@ function clicked_submit() {
     const Fuel_Type = document.getElementById("form").Fuel_Type.value
     const Gear_Type = document.getElementById("form").Gear_Type.value
     const Mileage = document.getElementById("form").Mileage.value
+    const Region = document.getElementById("form").Region.value
 
-    const url = "http://localhost:3000/?Make="+Make+"&Type="+Type+"&Year="+Year+"&Origin="+Origin+"&Color="+Color+"&Options="+Options+"&Engine_Size="+Engine_Size+"&Fuel_Type="+Fuel_Type+"&Gear_Type="+Gear_Type+"&Mileage="+Mileage//+"&Region=Riyadh"
+    const url = "http://localhost:3000/?Make="+Make+"&Type="+Type+"&Year="+Year+"&Origin="+Origin+"&Color="+Color+"&Options="+Options+"&Engine_Size="+Engine_Size+"&Fuel_Type="+Fuel_Type+"&Gear_Type="+Gear_Type+"&Mileage="+Mileage+"&Region="+Region
 
     $("#result").html("Predicting....");
     $.get( url, function( data ) {

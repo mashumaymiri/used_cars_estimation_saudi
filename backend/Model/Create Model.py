@@ -52,6 +52,7 @@ def main():
     for column in df.columns:
         f.write(column+",")
     f.close()
+    print(df.columns)
     
     # # Standrize
     mean = df["Price"].mean()

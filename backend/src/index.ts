@@ -20,7 +20,7 @@ app.get("/", cors(),(req: express.Request, res: express.Response): void => {
   const Fuel_Type: string = req.query["Fuel_Type"] as string;
   const Gear_Type: string = req.query["Gear_Type"] as string;
   const Mileage: number = parseInt(req.query["Mileage"] as unknown as string);
-  const Region: string = /* req.query["Region"] as string */"Riyadh";
+  const Region: string = req.query["Region"] as string//"Riyadh";
 
   const data: (string | number)[] = [
     Make,
