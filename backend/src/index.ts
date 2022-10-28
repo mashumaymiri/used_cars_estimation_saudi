@@ -2,12 +2,11 @@ import express from "express";
 import { PythonShell, PythonShellError } from "python-shell";
 import cors from "cors";
 
-
 const app = express();
 
-app.use(cors())
+app.use(cors());
 
-app.get("/", cors(),(req: express.Request, res: express.Response): void => {
+app.get("/", cors(), (req: express.Request, res: express.Response): void => {
   const Make: string = req.query["Make"] as string;
   const Type: string = req.query["Type"] as string;
   const Year: number = parseInt(req.query["Year"] as unknown as string);
@@ -20,7 +19,7 @@ app.get("/", cors(),(req: express.Request, res: express.Response): void => {
   const Fuel_Type: string = req.query["Fuel_Type"] as string;
   const Gear_Type: string = req.query["Gear_Type"] as string;
   const Mileage: number = parseInt(req.query["Mileage"] as unknown as string);
-  const Region: string = req.query["Region"] as string//"Riyadh";
+  const Region: string = req.query["Region"] as string;
 
   const data: (string | number)[] = [
     Make,
@@ -35,8 +34,6 @@ app.get("/", cors(),(req: express.Request, res: express.Response): void => {
     Mileage,
     Region,
   ];
-
-  //   console.log(data);
 
   PythonShell.run(
     "run model.py",
@@ -55,7 +52,6 @@ app.get("/", cors(),(req: express.Request, res: express.Response): void => {
         console.log(err);
         throw err;
       }
-    //   console.log("results: %j", results);
       res.send(results);
     }
   );
